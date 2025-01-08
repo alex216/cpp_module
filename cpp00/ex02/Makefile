@@ -2,6 +2,8 @@ NAME = account
 SRC = *.cpp
 HEADERS = *.hpp
 FILE = 19920104_091532.log
+GREEN = \033[0;32m
+NC = \033[0m  # No Color
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
@@ -15,6 +17,10 @@ $(NAME): $(SRC) $(HEADERS)
 clean:
 	rm -f $(NAME)
 
+.PHONE: fclean
+fclean: clean
+	rm -f result.txt $(FILE)
+
 .PHONY: re
 re: clean all
 
@@ -23,15 +29,16 @@ re: clean all
 ex: all
 	./$(NAME)
 
-.PHONY: testall
-testall: $(SRC) $(HEADERS)
-	@c++ $(SRC) -o $(NAME)
+.PHONY: test
+test: all
 
-.PHONY: diff
-diff: testall
-	@./$(NAME) > result.txt
-	@COMPARELINE=$$(./$(NAME) | wc -l | bc); \
-	head -n $$COMPARELINE $(FILE) | diff result.txt -
+	@if [ ! -f $(FILE) ]; then \
+		curl -s https://cdn.intra.42.fr/document/document/28346/19920104_091532.log -o $(FILE); \
+	fi
+	./$(NAME) > result.txt
+
+	diff $(FILE) result.txt 
+
 	@if [ $$? -eq 0 ]; then \
-		echo "test PASS"; \
+		echo "$(GREEN)test PASS$(NC)"; \
 	fi
