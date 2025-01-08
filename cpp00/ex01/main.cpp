@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <cstdlib>
+
 #include "PhoneBook.class.hpp"
 #include "utils.hpp"
 
@@ -46,7 +48,7 @@ void search_command(PhoneBook &phoneBook)
 		std::cout << "Invalid index" << std::endl;
 		return;
 	}
-	int index = std::stoi(index_str);
+	int index = std::atoi(index_str.c_str());
 	phoneBook.displayContactOfIndex(index);
 }
 

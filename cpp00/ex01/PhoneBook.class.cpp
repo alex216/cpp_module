@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+#include <sstream>
+
 #include "PhoneBook.class.hpp"
 #include "utils.hpp"
 
@@ -45,7 +47,11 @@ void PhoneBook::printfContactLine(int i, const Contact *sample) const
 {
 	if (!sample)
 		return;
-	printfLine(std::to_string(i), truncate(sample->getFirst_name()), truncate(sample->getLast_name()), truncate(sample->getNickname()));
+
+	std::stringstream ss;
+	ss << i;
+	std::string str = ss.str();
+	printfLine(str, truncate(sample->getFirst_name()), truncate(sample->getLast_name()), truncate(sample->getNickname()));
 }
 
 void PhoneBook::displayContactOfIndex(int index) const
@@ -61,12 +67,12 @@ void PhoneBook::displayContactOfIndex(int index) const
 void PhoneBook::displayPhoneBook(void) const
 {
 	std::wcout.imbue(std::locale(""));
-	std::wcout << L"╭──────────╥──────────┬──────────┬──────────╮" << std::endl;
+	std::cout << "╭──────────╥──────────┬──────────┬──────────╮" << std::endl;
 	printfLine("index", "first name", "last name", "nickname");
-	std::wcout << L"╞══════════╬══════════╪══════════╪══════════╡" << std::endl;
+	std::cout << "╞══════════╬══════════╪══════════╪══════════╡" << std::endl;
 	for (int i = 0; i < PhoneBook::Length; i++)
 	{
 		printfContactLine(i, &(this->contacts[i]));
 	}
-	std::wcout << L"╰──────────╨──────────┴──────────┴──────────╯" << std::endl;
+	std::cout << "╰──────────╨──────────┴──────────┴──────────╯" << std::endl;
 }

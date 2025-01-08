@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 void err(const std::string &msg)
 {
@@ -24,7 +25,9 @@ std::string question(std::string question)
 	return input;
 }
 
+#if defined(__APPLE__)
 __attribute__((destructor)) void end()
 {
 	system("leaks phonebook");
 }
+#endif
