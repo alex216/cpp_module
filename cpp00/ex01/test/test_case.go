@@ -43,6 +43,27 @@ func RetTestCase() []tests {
 				"Enter phone number: " +
 				"Enter darkest secret: " + Ps,
 		},
+		// add contact but invalid phone number
+		{
+			name: "add cmd",
+			input: "" +
+				"ADD\n" +
+				"alex\n" +
+				"eight\n" +
+				"poo\n" +
+				"12345678s\n" +
+				"I have a pen.\n" +
+				"EXIT\n",
+			expected: "" +
+				Ps +
+				"Enter first name: " +
+				"Enter last name: " +
+				"Enter nickname: " +
+				"Enter phone number: " +
+				"Phone number must contain only digits\n" +
+				Ps,
+
+		},
 		// search invalid index
 		{
 			name: "search invalid index",

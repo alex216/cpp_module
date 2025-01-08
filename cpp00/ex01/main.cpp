@@ -21,6 +21,11 @@ void add_command(PhoneBook &phonebook)
 	std::string last_name = question("Enter last name: ");
 	std::string nickname = question("Enter nickname: ");
 	std::string phone_number = question("Enter phone number: ");
+	if (!is_valid_phone_number(phone_number))
+	{
+		std::cout << "Phone number must contain only digits" << std::endl;
+		return;
+	}
 	std::string darkest_secret = question("Enter darkest secret: ");
 
 	Contact contact_info = Contact(first_name, last_name, nickname, phone_number, darkest_secret);
