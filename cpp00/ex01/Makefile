@@ -14,6 +14,10 @@ $(NAME): $(SRC) $(HEADERS)
 clean:
 	rm -f $(NAME)
 
+.PHONY: fclean
+fclean:
+	rm -f $(NAME)
+
 .PHONY: re
 re: clean all
 

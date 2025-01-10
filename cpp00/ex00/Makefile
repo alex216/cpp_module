@@ -14,6 +14,11 @@ $(NAME): $(OBJ)
 clean:
 	rm -f $(OBJ)
 
+.PHONY: fclean
+fclean:
+	rm -f $(OBJ)
+	rm -f $(NAME)
+
 .PHONY: re
 re: clean all
 
