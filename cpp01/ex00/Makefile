@@ -25,4 +25,8 @@ re: clean all
 ##########################################
 .PHONY: test
 test: all
+ifneq ($(shell uname), Darwin)
+	@valgrind --leak-check=full --show-leak-kinds=all -q ./$(NAME)
+else
 	@./$(NAME)
+endif
