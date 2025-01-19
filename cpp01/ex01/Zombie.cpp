@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(void)
+Zombie::Zombie(void) : name("unnamed")
 {
 	return;
 }
