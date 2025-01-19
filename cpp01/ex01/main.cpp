@@ -1,3 +1,5 @@
+#include <cstdlib>
+
 #include "Zombie.hpp"
 #include "ZombieHorde.hpp"
 
@@ -11,7 +13,7 @@ int main()
 	Zombie *zombieArray = zombieHorde(num, "alice");
 	// Zombie *zombieArray = new Zombie[num];
 
-	if (zombieArray == nullptr)
+	if (zombieArray == NULL)
 	{
 		std::cerr << "Failed to create zombie horde." << std::endl;
 		return EXIT_FAILURE;

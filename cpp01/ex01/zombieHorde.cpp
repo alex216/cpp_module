@@ -1,13 +1,20 @@
+#include <sstream>
+
 #include "ZombieHorde.hpp"
-#include <algorithm>
-#include <functional>
+
+std::string convertToString(int number)
+{
+	std::stringstream ss;
+	ss << number;
+	return ss.str();
+}
 
 Zombie *zombieHorde(int N, const std::string &name)
 {
 	Zombie *zombieArray;
 
 	if (N <= 0)
-		return nullptr;
+		return NULL;
 	try
 	{
 		zombieArray = new Zombie[N];
@@ -15,11 +22,11 @@ Zombie *zombieHorde(int N, const std::string &name)
 	catch (std::bad_alloc &e)
 	{
 		std::cerr << "Memory allocation failed: " << e.what() << std::endl;
-		return nullptr;
+		return NULL;
 	}
 	for (int i = 0; i < N; i++)
 	{
-		zombieArray[i].setName(name + std::to_string(i));
+		zombieArray[i].setName(name + convertToString(i));
 	}
 	return zombieArray;
 }
