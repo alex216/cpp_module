@@ -15,10 +15,18 @@ $(NAME): $(SRC)
 clean:
 	@rm -f $(OBJ)
 
+.PHONY: fclean
+fclean: clean
+	@rm -f $(NAME)
+
 .PHONY: re
-re: clean all
+re: fclean all
 
 ##########################################
 .PHONY: test
 test: all
+ifneq ($(shell uname), Darwin)
+	@valgrind --leak-check=full --show-leak-kinds=all -q ./$(NAME)
+else
 	@./$(NAME)
+endif
