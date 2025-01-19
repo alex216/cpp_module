@@ -32,5 +32,12 @@ int main()
 	std::cout << std::endl;
 
 	// third
+	// since randomChump is a function to create a Zombie,
+	// it is better to use newZombie inside the function to create a Zombie.
 	randomChump("Charlie(stack)");
+
+	// it is easier to use newZombie to create a Zombie.
+	// randomChump("Charli1(stack)");
+	// randomChump("Charli2(stack)");
+	// randomChump("Charli3(stack)");
 }
