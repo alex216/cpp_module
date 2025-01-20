@@ -19,8 +19,12 @@ $(NAME): $(SRC)
 clean:
 	@rm -f $(OBJ)
 
+.PHONY: fclean
+fclean:
+	@rm -f $(NAME)
+
 .PHONY: re
-re: clean all
+re: fclean all
 
 ##########################################
 .PHONY: test
