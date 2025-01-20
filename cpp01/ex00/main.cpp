@@ -11,11 +11,6 @@
 // stack
 // high address
 
-// __attribute__((destructor)) void end()
-// {
-// 	system("leaks Zombie");
-// }
-
 int main()
 {
 	// first
