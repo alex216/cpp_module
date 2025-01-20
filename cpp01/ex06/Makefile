@@ -3,7 +3,7 @@ SRC = *.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+FLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -Wno-implicit-fallthrough
 
 .PHONY: all
 all: $(NAME)

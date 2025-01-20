@@ -1,3 +1,5 @@
+#include <cstdlib>
+
 #include "Harl.hpp"
 
 #define NUM 4
