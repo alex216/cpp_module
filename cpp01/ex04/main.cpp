@@ -31,23 +31,39 @@ int main(int argc, char *argv[])
 	std::string s1 = argv[2];
 	std::string s2 = argv[3];
 	if (s1.empty())
-		return (0);
+	{
+		std::cerr << "Error: string1 cannot be empty" << std::endl;
+		return 1;
+	}
 
-	std::fstream r_file(filename);
+	// open read file
+	std::ifstream r_file(filename);
 	if (!r_file.is_open())
-		std::cout << "r_file open error" << std::endl;
+	{
+		std::cerr << "Error: cannot open input file: " << filename << std::endl;
+		r_file.close();
+		return 1;
+	}
 
-	std::string line, content;
+	// open write file
+	std::string outfile = filename + ".replace";
+	std::ofstream w_file(outfile);
+	if (!w_file.is_open())
+	{
+		std::cerr << "Error: cannot create output file: " << outfile << std::endl;
+		r_file.close();
+		return 1;
+	}
+
+	// replace and write
+	std::string line;
 	while (std::getline(r_file, line))
 	{
-		content += editline(line, s1, s2);
+		w_file << editline(line, s1, s2);
+		if (!r_file.eof())
+			w_file << '\n';
 	}
 	r_file.close();
-
-	std::fstream w_file(filename);
-	if (!w_file.is_open())
-		std::cout << "w_file open error" << std::endl;
-
-	w_file << content;
 	w_file.close();
+	return 0;
 }
