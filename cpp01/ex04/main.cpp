@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
 
 __attribute__((destructor)) static void destructor()
 {
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
 	}
 
 	// open read file
-	std::ifstream r_file(filename);
+	std::ifstream r_file(filename.c_str());
 	if (!r_file.is_open())
 	{
 		std::cerr << "Error: cannot open input file: " << filename << std::endl;
@@ -47,7 +48,7 @@ int main(int argc, char *argv[])
 
 	// open write file
 	std::string outfile = filename + ".replace";
-	std::ofstream w_file(outfile);
+	std::ofstream w_file(outfile.c_str());
 	if (!w_file.is_open())
 	{
 		std::cerr << "Error: cannot create output file: " << outfile << std::endl;
