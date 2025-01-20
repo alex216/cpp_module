@@ -31,17 +31,17 @@ void Harl::complain(std::string level)
 
 void Harl::debug(void)
 {
-	std::cout << "debug" << std::endl;
+	std::cout << "[ DEBUG ]" << std::endl;
 }
 void Harl::info(void)
 {
-	std::cout << "info" << std::endl;
+	std::cout << "[ INFO ]" << std::endl;
 }
 void Harl::warning(void)
 {
-	std::cout << "warning" << std::endl;
+	std::cout << "[ WARNING ]" << std::endl;
 }
 void Harl::error(void)
 {
-	std::cout << "error" << std::endl;
+	std::cout << "[ ERROR ]" << std::endl;
 }
