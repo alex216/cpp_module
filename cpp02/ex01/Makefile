@@ -22,13 +22,22 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
+debug: FLAGS += -DDEBUG
+debug: fclean $(NAME)
+
 ##########################################
 .PHONY: test
 test: all
 ifneq ($(shell uname), Darwin)
-	valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 -q ./$(NAME) && \
+	@valgrind --leak-check=full --show-leak-kinds=all --error-exitcode=1 -q ./$(NAME) && \
 	echo "\n$(GREEN)test PASS, no memory leaks🚀$(NC)" || \
 	echo "\n$(RED)test FAIL, memory leaks$(NC)"
 else
-	./$(NAME)
+	@./$(NAME)
 endif
+
+df:
+	make re && ./$(NAME) > test_output1.txt
+	make debug && ./$(NAME) > test_output2.txt
+	diff test_output1.txt test_output2.txt || true
+	rm -f test_output1.txt test_output2.txt

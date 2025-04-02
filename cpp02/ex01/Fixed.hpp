@@ -2,7 +2,13 @@
 #define FIXED_HPP
 
 #include <iostream>
+#include <cmath>
+#include <cassert>
+#include <iomanip>
+#include <sstream>
+#include <limits>
 
+// Fixed is a class that represents a fixed-point number.
 class Fixed
 {
 
