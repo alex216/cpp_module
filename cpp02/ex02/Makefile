@@ -13,7 +13,11 @@ $(NAME): $(SRC)
 
 .PHONY: clean
 clean:
-	@rm -f $(OBJ)
+	rm -f $(OBJ)
+
+.PHONY: fclean
+fclean: clean
+	rm -f $(NAME)
 
 .PHONY: re
 re: clean all
