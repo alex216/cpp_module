@@ -1,6 +1,6 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(void) : ClapTrap() // : ClapTrap() is not necessary
+FragTrap::FragTrap(void)
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
 	this->_Name = "Default";
@@ -11,7 +11,7 @@ FragTrap::FragTrap(void) : ClapTrap() // : ClapTrap() is not necessary
 	return;
 }
 
-FragTrap::FragTrap(const std::string name) : ClapTrap(name) // override
+FragTrap::FragTrap(const std::string name)
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
 	this->_Name = name;

@@ -10,6 +10,9 @@
 // Attack damage(FragTrap)(30)
 class DiamondTrap : public ScavTrap, public FragTrap
 {
+private:
+	std::string _Name;
+
 public:
 	DiamondTrap(void);
 	DiamondTrap(const DiamondTrap &src);

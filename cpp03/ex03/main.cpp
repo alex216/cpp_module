@@ -22,6 +22,8 @@ int main()
 
 	std::cout << "\033[32mTesting default constructor\033[0m" << std::endl;
 	DiamondTrap Default;
+	// Default.whoAmI();
+	// exit(42);
 	assert(Default.getName() == "Default");
 	assert(Default.getHit_points() == health_pts);
 	assert(Default.getEnergy_points() == energy_pts);
@@ -31,6 +33,7 @@ int main()
 	DiamondTrap Alice("Alice");
 
 	Alice.whoAmI();
+	exit(42);
 	assert(Alice.getName() == "Alice");
 	assert(Alice.getHit_points() == health_pts);
 	assert(Alice.getEnergy_points() == energy_pts);
