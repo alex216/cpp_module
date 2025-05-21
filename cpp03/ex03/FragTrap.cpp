@@ -23,7 +23,7 @@ FragTrap::FragTrap(const std::string name) : ClapTrap(name) // override
 }
 
 // Derived class's copy constructor must explicitly call base class's copy constructor at initialization list
-FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src) // ClapTrap(src) is necessary
+FragTrap::FragTrap(const FragTrap &src) : ClapTrap(src)
 {
 	*this = src;
 }

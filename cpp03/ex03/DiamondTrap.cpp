@@ -22,7 +22,7 @@ DiamondTrap::DiamondTrap(const std::string name) : ClapTrap(name) // override
 	return;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &src)
+DiamondTrap::DiamondTrap(const DiamondTrap &src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	*this = src;
 }
