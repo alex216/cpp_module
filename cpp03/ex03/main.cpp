@@ -29,6 +29,8 @@ int main()
 
 	std::cout << "\033[32mTesting parameterized constructor\033[0m" << std::endl;
 	DiamondTrap Alice("Alice");
+
+	Alice.whoAmI();
 	assert(Alice.getName() == "Alice");
 	assert(Alice.getHit_points() == health_pts);
 	assert(Alice.getEnergy_points() == energy_pts);

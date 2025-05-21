@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap() // : ClapTrap() is not necessary
+DiamondTrap::DiamondTrap(void)
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(DiamondTrap override)" << std::endl;
 	this->_Name = "Default";
