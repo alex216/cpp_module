@@ -4,6 +4,7 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 #ifdef __APPLE__
 __attribute__((destructor)) static void destructor()
@@ -16,18 +17,18 @@ __attribute__((destructor)) static void destructor()
 int main()
 {
 	const unsigned int health_pts = 100;
-	const unsigned int energy_pts = 100;
+	const unsigned int energy_pts = 50;
 	const unsigned int attack_pts = 30;
 
 	std::cout << "\033[32mTesting default constructor\033[0m" << std::endl;
-	FragTrap Default;
+	DiamondTrap Default;
 	assert(Default.getName() == "Default");
 	assert(Default.getHit_points() == health_pts);
 	assert(Default.getEnergy_points() == energy_pts);
 	assert(Default.getAttack_damage() == attack_pts);
 
 	std::cout << "\033[32mTesting parameterized constructor\033[0m" << std::endl;
-	FragTrap Alice("Alice");
+	DiamondTrap Alice("Alice");
 	assert(Alice.getName() == "Alice");
 	assert(Alice.getHit_points() == health_pts);
 	assert(Alice.getEnergy_points() == energy_pts);
@@ -70,7 +71,7 @@ int main()
 	assert(Alice.getHit_points() == 0); // HP should not go below 0
 
 	std::cout << "\033[32mTesting energy_points depletion\033[0m" << std::endl;
-	FragTrap Bob("Bob");
+	DiamondTrap Bob("Bob");
 	for (unsigned int i = 0; i < energy_pts; ++i)
 	{
 		unsigned int initial_energy = Bob.getEnergy_points();

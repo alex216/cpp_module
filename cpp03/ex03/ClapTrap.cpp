@@ -8,20 +8,20 @@ static unsigned int ft_min(unsigned int a, unsigned int b)
 ClapTrap::ClapTrap(void) : _Name("Default")
 {
 	std::cout << this->_Name << "\tConstructed" << std::endl;
-	this->_Hit_points = 10;
-	this->_Energy_points = 10;
-	this->_Attack_damage = 0;
-	ClapTrap::HEALTH_PTS = 10;
+	this->_Hit_points = ClapTrap::ClapTrap_HEALTH_PTS;
+	this->_Energy_points = ClapTrap::ClapTrap_ENERGY_PTS;
+	this->_Attack_damage = ClapTrap::ClapTrap_ATTACK_DMG;
+	ClapTrap::HEALTH_PTS = ClapTrap::ClapTrap_HEALTH_PTS;
 	return;
 }
 
 ClapTrap::ClapTrap(const std::string name) : _Name(name)
 {
 	std::cout << this->_Name << "\tConstructed" << std::endl;
-	this->_Hit_points = 10;
-	this->_Energy_points = 10;
-	this->_Attack_damage = 0;
-	ClapTrap::HEALTH_PTS = 10;
+	this->_Hit_points = ClapTrap::ClapTrap_HEALTH_PTS;
+	this->_Energy_points = ClapTrap::ClapTrap_ENERGY_PTS;
+	this->_Attack_damage = ClapTrap::ClapTrap_ATTACK_DMG;
+	ClapTrap::HEALTH_PTS = ClapTrap::ClapTrap_HEALTH_PTS;
 	return;
 }
 
@@ -35,9 +35,10 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 	if (this == &src)
 		return *(this);
 	this->_Name = src.getName();
-	this->_Hit_points = src.getHit_points();
-	this->_Energy_points = src.getEnergy_points();
-	this->_Attack_damage = src.getAttack_damage();
+	this->_Hit_points = ClapTrap::ClapTrap_HEALTH_PTS;
+	this->_Energy_points = ClapTrap::ClapTrap_ENERGY_PTS;
+	this->_Attack_damage = ClapTrap::ClapTrap_ATTACK_DMG;
+	ClapTrap::HEALTH_PTS = ClapTrap::ClapTrap_HEALTH_PTS;
 	return *(this);
 }
 

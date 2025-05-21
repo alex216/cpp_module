@@ -4,10 +4,10 @@ FragTrap::FragTrap(void) : ClapTrap() // : ClapTrap() is not necessary
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
 	this->_Name = "Default";
-	this->_Hit_points = 100;
-	this->_Energy_points = 100;
-	this->_Attack_damage = 30;
-	FragTrap::HEALTH_PTS = 100; // actually it is ClapTrap's member variable
+	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
+	this->_Energy_points = FragTrap::FragTrap_ENERGY_PTS;
+	this->_Attack_damage = FragTrap::FragTrap_ATTACK_DMG;
+	FragTrap::HEALTH_PTS = FragTrap::FragTrap_HEALTH_PTS;
 	return;
 }
 
@@ -15,10 +15,10 @@ FragTrap::FragTrap(const std::string name) : ClapTrap(name) // override
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
 	this->_Name = name;
-	this->_Hit_points = 100;
-	this->_Energy_points = 100;
-	this->_Attack_damage = 30;
-	FragTrap::HEALTH_PTS = 100; // actually it is ClapTrap's member variable
+	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
+	this->_Energy_points = FragTrap::FragTrap_ENERGY_PTS;
+	this->_Attack_damage = FragTrap::FragTrap_ATTACK_DMG;
+	FragTrap::HEALTH_PTS = FragTrap::FragTrap_HEALTH_PTS;
 	return;
 }
 
@@ -33,9 +33,10 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
 	if (this == &src)
 		return *(this);
 	this->_Name = src.getName();
-	this->_Hit_points = src.getHit_points();
-	this->_Energy_points = src.getEnergy_points();
-	this->_Attack_damage = src.getAttack_damage();
+	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
+	this->_Energy_points = FragTrap::FragTrap_ENERGY_PTS;
+	this->_Attack_damage = FragTrap::FragTrap_ATTACK_DMG;
+	FragTrap::HEALTH_PTS = FragTrap::FragTrap_HEALTH_PTS;
 	return *(this);
 }
 

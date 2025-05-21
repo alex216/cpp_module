@@ -3,29 +3,26 @@
 
 ScavTrap::ScavTrap(void) : ClapTrap() // : ClapTrap() is not necessary
 {
-	this->_Name = "Default";
-	this->_Hit_points = 100;
-	this->_Energy_points = 50;
-	this->_Attack_damage = 20;
-	ScavTrap::HEALTH_PTS = 100; // actually it is ClapTrap's member variable
-
 	std::cout << this->_Name << "\tConstructed\t\t\t(ScavTrap override)" << std::endl;
+	this->_Name = "Default";
+	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
+	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
+	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
+	ScavTrap::HEALTH_PTS = ScavTrap::ScavTrap_HEALTH_PTS;
 	return;
 }
 
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name) // override
 {
-	this->_Name = name;
-	this->_Hit_points = 100;
-	this->_Energy_points = 50;
-	this->_Attack_damage = 20;
-	ScavTrap::HEALTH_PTS = 100; // actually it is ClapTrap's member variable
-
 	std::cout << this->_Name << "\tConstructed\t\t\t(ScavTrap override)" << std::endl;
+	this->_Name = name;
+	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
+	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
+	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
+	ScavTrap::HEALTH_PTS = ScavTrap::ScavTrap_HEALTH_PTS;
 	return;
 }
 
-// Derived class's copy constructor must explicitly call base class's copy constructor at initialization list
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src) // ClapTrap(src) is necessary
 {
 	*this = src;
@@ -36,19 +33,20 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 	if (this == &src)
 		return (*this);
 	this->_Name = src.getName();
-	this->_Hit_points = src.getHit_points();
-	this->_Energy_points = src.getEnergy_points();
-	this->_Attack_damage = src.getAttack_damage();
+	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
+	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
+	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
+	ScavTrap::HEALTH_PTS = ScavTrap::ScavTrap_HEALTH_PTS;
 	return *(this);
 }
 
-ScavTrap::~ScavTrap(void) // override
+ScavTrap::~ScavTrap(void)
 {
 	std::cout << this->_Name << "\tDestructed💥\t\t\t(ScavTrap override)" << std::endl;
 	return;
 }
 
-void ScavTrap::attack(const std::string &target) // override
+void ScavTrap::attack(const std::string &target)
 {
 	if (this->getHit_points() == 0)
 		return;

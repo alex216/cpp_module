@@ -8,7 +8,11 @@
 // Attack damage(0)
 class ClapTrap
 {
-protected: // change to protected to use in deribed class
+protected:
+	static const unsigned int ClapTrap_HEALTH_PTS = 10;
+	static const unsigned int ClapTrap_ENERGY_PTS = 10;
+	static const unsigned int ClapTrap_ATTACK_DMG = 0;
+
 	std::string _Name;
 	unsigned int _Hit_points;
 	unsigned int _Energy_points;
@@ -18,9 +22,9 @@ protected: // change to protected to use in deribed class
 
 public:
 	ClapTrap(void);
-	ClapTrap(const ClapTrap &src);			  // copy constructor
-	ClapTrap &operator=(const ClapTrap &src); // copy assignment operator
-	virtual ~ClapTrap(void);				  // base class destructor should be virtual
+	ClapTrap(const ClapTrap &src);
+	ClapTrap &operator=(const ClapTrap &src);
+	virtual ~ClapTrap(void);
 
 	ClapTrap(const std::string name);
 
