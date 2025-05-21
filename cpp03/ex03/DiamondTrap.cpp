@@ -11,7 +11,7 @@ DiamondTrap::DiamondTrap(void)
 	return;
 }
 
-DiamondTrap::DiamondTrap(const std::string name) : ClapTrap(name) // override
+DiamondTrap::DiamondTrap(const std::string name)
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(DiamondTrap override)" << std::endl;
 	this->_Name = name;
