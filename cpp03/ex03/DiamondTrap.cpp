@@ -44,19 +44,6 @@ DiamondTrap::~DiamondTrap(void)
 	return;
 }
 
-void DiamondTrap::attack(const std::string &target)
-{
-	if (this->getHit_points() == 0)
-		return;
-	unsigned int energy_pts = this->getEnergy_points();
-	if (energy_pts == 0)
-		return;
-	this->setEnery_points(energy_pts - 1);
-
-	std::cout << this->getName() << "\tattacks " << target << " with "
-			  << this->getAttack_damage() << " damage\t(DiamondTrap override)" << std::endl;
-}
-
 // own capability
 void DiamondTrap::whoAmI()
 {

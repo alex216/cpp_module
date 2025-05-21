@@ -18,8 +18,6 @@ public:
 
 	DiamondTrap(const std::string name);
 
-	void attack(const std::string &target);
-
 	// own capability
 	void whoAmI(void);
 };
