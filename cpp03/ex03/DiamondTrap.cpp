@@ -32,7 +32,8 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &src)
 	if (this == &src)
 		return (*this);
 	// this->_Name = src.getName(); // {name}_clap_name is ClapTrap's member function
-	this->_Name = src._Name; // {name} copying DiamondTrap's member field
+	this->_Name = src._Name;
+	this->ClapTrap::_Name = src.ClapTrap::_Name;
 	std::cout << this->_Name << "\tAssigned\t\t\t(DiamondTrap override)" << std::endl;
 	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
 	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
