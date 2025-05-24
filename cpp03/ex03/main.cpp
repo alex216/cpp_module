@@ -16,14 +16,27 @@ __attribute__((destructor)) static void destructor()
 
 int main()
 {
+	DiamondTrap a("test1");
+	DiamondTrap b(a);
+	// DiamondTrap c;
+	// c = b;
+	std::cerr << "++++++++++++++++++++++++++++++++++" << std::endl;
+
+	a.whoAmI();
+	b.whoAmI();
+	// c.whoAmI();
+
+	std::cerr << "++++++++++++++++++++++++++++++++++" << std::endl;
+	a.attack("test of a");
+	b.attack("test of b");
+	// c.attack("test of c");
+	exit(42);
 	const unsigned int health_pts = 100;
 	const unsigned int energy_pts = 50;
 	const unsigned int attack_pts = 30;
 
 	std::cout << "\033[32mTesting default constructor\033[0m" << std::endl;
 	DiamondTrap Default;
-	// Default.whoAmI();
-	// exit(42);
 	assert(Default.getName() == "Default");
 	assert(Default.getHit_points() == health_pts);
 	assert(Default.getEnergy_points() == energy_pts);
@@ -34,6 +47,7 @@ int main()
 
 	Alice.whoAmI();
 	exit(42);
+
 	assert(Alice.getName() == "Alice");
 	assert(Alice.getHit_points() == health_pts);
 	assert(Alice.getEnergy_points() == energy_pts);

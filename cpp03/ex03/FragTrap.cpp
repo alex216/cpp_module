@@ -2,8 +2,8 @@
 
 FragTrap::FragTrap(void)
 {
+	// this->_Name = "Default";
 	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
-	this->_Name = "Default";
 	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
 	this->_Energy_points = FragTrap::FragTrap_ENERGY_PTS;
 	this->_Attack_damage = FragTrap::FragTrap_ATTACK_DMG;
@@ -13,8 +13,8 @@ FragTrap::FragTrap(void)
 
 FragTrap::FragTrap(const std::string name)
 {
-	std::cout << this->_Name << "\tConstructed\t\t\t(FragTrap override)" << std::endl;
 	this->_Name = name;
+	std::cout << this->_Name << "\tConstructed(with name)\t\t\t(FragTrap override)" << std::endl;
 	this->_Hit_points = FragTrap::FragTrap_HEALTH_PTS;
 	this->_Energy_points = FragTrap::FragTrap_ENERGY_PTS;
 	this->_Attack_damage = FragTrap::FragTrap_ATTACK_DMG;

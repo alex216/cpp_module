@@ -17,7 +17,7 @@ ClapTrap::ClapTrap(void) : _Name("Default")
 
 ClapTrap::ClapTrap(const std::string name) : _Name(name)
 {
-	std::cout << this->_Name << "\tConstructed" << std::endl;
+	std::cout << this->_Name << "\tConstructed(with name)" << std::endl;
 	this->_Hit_points = ClapTrap::ClapTrap_HEALTH_PTS;
 	this->_Energy_points = ClapTrap::ClapTrap_ENERGY_PTS;
 	this->_Attack_damage = ClapTrap::ClapTrap_ATTACK_DMG;

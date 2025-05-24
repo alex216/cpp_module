@@ -1,10 +1,9 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap(void) : ClapTrap() // : ClapTrap() is not necessary
+ScavTrap::ScavTrap(void)
 {
 	std::cout << this->_Name << "\tConstructed\t\t\t(ScavTrap override)" << std::endl;
-	this->_Name = "Default";
 	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
 	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
 	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
@@ -12,10 +11,10 @@ ScavTrap::ScavTrap(void) : ClapTrap() // : ClapTrap() is not necessary
 	return;
 }
 
-ScavTrap::ScavTrap(const std::string name) : ClapTrap(name) // override
+ScavTrap::ScavTrap(const std::string name)
 {
-	std::cout << this->_Name << "\tConstructed\t\t\t(ScavTrap override)" << std::endl;
 	this->_Name = name;
+	std::cout << this->_Name << "\tConstructed(with name)\t\t\t(ScavTrap override)" << std::endl;
 	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
 	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
 	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
