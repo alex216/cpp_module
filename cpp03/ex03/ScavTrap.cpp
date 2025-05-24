@@ -31,7 +31,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
 {
 	if (this == &src)
 		return (*this);
-	this->_Name = src.getName();
+	this->_Name = src._Name;
 	this->_Hit_points = ScavTrap::ScavTrap_HEALTH_PTS;
 	this->_Energy_points = ScavTrap::ScavTrap_ENERGY_PTS;
 	this->_Attack_damage = ScavTrap::ScavTrap_ATTACK_DMG;
