@@ -5,6 +5,10 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+#define GREEN "\033[1;32m"
+#define YELLOW "\033[1;33m"
+#define RESET "\033[0m"
+
 #ifdef __APPLE__
 __attribute__((destructor)) static void destructor()
 {
@@ -25,7 +29,7 @@ void testNormal()
 	std::cout << "Dog.makeSound(): ";
 	j->makeSound();
 
-	std::cout << "Cat.makeSound(): ";
+	std::cout << GREEN "Cat.makeSound(): " RESET;
 	i->makeSound();
 
 	std::cout << "Animal.makeSound(): ";
@@ -43,7 +47,7 @@ void testWrong()
 
 	std::cout << "WrongCat.getType(): " << i->getType() << std::endl;
 
-	std::cout << "WrongCat.makeSound(): ";
+	std::cout << YELLOW "WrongCat.makeSound(): " RESET;
 	i->makeSound(); // WrongCat's makeSound() is not called
 
 	std::cout << "WrongAnimal.makeSound(): ";
