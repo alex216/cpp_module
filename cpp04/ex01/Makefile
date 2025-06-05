@@ -1,25 +1,26 @@
-NAME = ex01
+NAME = main
 SRC = *.cpp
-HEADER = *.hpp
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-# FLAGS = -Wall -Wextra -Werror -std=c++98 -Wno-address-of-temporary
 
 .PHONY: all
 all: $(NAME)
 
-$(NAME): $(SRC) $(HEADER)
-	@$(CXX) $(FLAGS) $(SRC) -o $(NAME)
+$(NAME): $(SRC)
+	$(CXX) $(FLAGS) $(SRC) -o $(NAME)
 
 .PHONY: clean
 clean:
-	@rm -f $(OBJ)
-	@rm -f $(NAME)
+	rm -f $(OBJ)
+
+.PHONY: fclean
+fclean: clean
+	rm -f $(NAME)
 
 .PHONY: re
-re: clean all
+re: fclean all
 
 ##########################################
 .PHONY: test
