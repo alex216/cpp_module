@@ -1,3 +1,5 @@
+#include <cassert>
+
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
@@ -60,5 +62,20 @@ int main()
 		delete me;
 	}
 
+	std::cerr << "------------------" << std::endl;
+	{
+		Ice ice;
+		Cure cure;
+		AMateria *ice_clone = ice.clone();
+		AMateria *cure_clone = cure.clone();
+
+		assert(ice_clone != NULL);
+		assert(cure_clone != NULL);
+		assert(ice_clone->getType() == "ice");
+		assert(cure_clone->getType() == "cure");
+
+		delete ice_clone;
+		delete cure_clone;
+	}
 	return 0;
 }
