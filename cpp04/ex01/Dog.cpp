@@ -5,13 +5,13 @@
 
 Dog::Dog(void) : Animal("Dog"), _brain(new Brain())
 {
-	std::cout << "Dog\tconstructed🔥" << std::endl;
+	std::cout << "---Dog\t\tConstructed🔥" << std::endl;
 	return;
 }
 
 Dog::Dog(const Dog &src) : Animal(src), _brain(new Brain(*src._brain))
 {
-	std::cout << "Dog\tCopy constructed🔥" << std::endl;
+	std::cout << "---Dog\t\tCopy constructed🔥" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog &src)
@@ -22,14 +22,14 @@ Dog &Dog::operator=(const Dog &src)
 		delete this->_brain;
 		this->_brain = new Brain(*src._brain);
 	}
-	std::cout << "Dog\tCopy assigned🔥" << std::endl;
+	std::cout << "---Dog\t\tCopy assigned🔥" << std::endl;
 	return *(this);
 }
 
 Dog::~Dog(void)
 {
 	delete this->_brain;
-	std::cout << "Dog\tDestructed💥" << std::endl;
+	std::cout << "--Dog\t\tDestructed💥" << std::endl;
 	return;
 }
 

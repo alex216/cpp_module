@@ -7,6 +7,9 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+#define ORANGE "\033[38;5;214m"
+#define RESET "\033[0m"
+
 #ifdef __APPLE__
 __attribute__((destructor)) static void destructor()
 {
@@ -15,10 +18,25 @@ __attribute__((destructor)) static void destructor()
 }
 #endif
 
-// appropriate destructors must be called in expected order
-void runAnimalArrayTest()
+static void copyTest()
 {
-	const size_t animalCount = 4;
+	Dog src_dog;
+	src_dog.setIdea(0, "old_idea");
+	{
+		Dog dst_dog = src_dog;
+		dst_dog.setIdea(0, "new_idea");
+
+		std::cout << ORANGE "dst_dog's idea[0]: " << dst_dog.getIdea(0) << RESET << std::endl;
+	}
+	// dog's brain must not be deleted
+	// dog's brain must not be overwritten
+	std::cout << ORANGE "src_dog's idea[0]: " << src_dog.getIdea(0) << RESET << std::endl;
+}
+
+// appropriate destructors must be called in expected order
+static void AnimalArrayTest()
+{
+	const size_t animalCount = 2;
 	Animal *animals[animalCount];
 	for (size_t i = 0; i < animalCount / 2; i++)
 		animals[i] = new Dog();
@@ -30,39 +48,16 @@ void runAnimalArrayTest()
 }
 
 // Brain must be copied deeply
-void runDeepCopyTest()
+static void DeepCopyTest()
 {
-	Dog a1;
-	a1.setIdea(0, "idea1");
+	Dog src;
+	src.setIdea(0, "good-idea");
 
-	std::cout << "a1 idea[0]: " << a1.getIdea(0) << std::endl;
-	std::cout << "a1 idea[1]: " << a1.getIdea(1) << std::endl;
+	std::cout << ORANGE "src idea[0]: " << src.getIdea(0) << " addr: " << &src.getIdea(0) << RESET << std::endl;
 
-	Dog a2;
-	a2 = a1;
-	a2.setIdea(0, "IDEA1");
-	a2.setIdea(1, "IDEA2");
+	Dog dst = src;
 
-	std::cout << "copied a1 to a2" << std::endl;
-
-	std::cout << "a1 idea[0]: " << a1.getIdea(0) << std::endl;
-	std::cout << "a1 idea[1]: " << a1.getIdea(1) << std::endl;
-	std::cout << "a2 idea[0]: " << a2.getIdea(0) << std::endl;
-	std::cout << "a2 idea[1]: " << a2.getIdea(1) << std::endl;
-}
-
-void copyTest()
-{
-	Dog dog;
-	dog.setIdea(0, "dog");
-	{
-		Dog tmp = dog;
-		tmp.setIdea(0, "tmp");
-		std::cout << "tmp idea[0]: " << tmp.getIdea(0) << std::endl;
-	}
-	// dog's brain must not be deleted
-	// dog's brain must not be overwritten
-	std::cout << "dog idea[0]: " << dog.getIdea(0) << std::endl;
+	std::cout << ORANGE "dst idea[0]: " << dst.getIdea(0) << " addr: " << &dst.getIdea(0) << RESET << std::endl;
 }
 
 int main()
@@ -72,9 +67,9 @@ int main()
 
 	std::cout << std::endl
 			  << "[Animal array test]" << std::endl;
-	runAnimalArrayTest();
+	AnimalArrayTest();
 
 	std::cout << std::endl
 			  << "[Deep copy test]" << std::endl;
-	runDeepCopyTest();
+	DeepCopyTest();
 }

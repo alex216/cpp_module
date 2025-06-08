@@ -3,7 +3,7 @@
 
 Brain::Brain(void)
 {
-	std::cout << "Brain\tConstructed🧠" << std::endl;
+	std::cout << "--Brain\t\tConstructed🧠" << std::endl;
 	return;
 }
 
@@ -13,7 +13,7 @@ Brain::Brain(const Brain &src)
 	{
 		this->_ideas[i] = src._ideas[i];
 	}
-	std::cout << "Brain\tCopy constructed🧠" << std::endl;
+	std::cout << "--Brain\t\tCopy constructed🧠" << std::endl;
 }
 
 Brain &Brain::operator=(const Brain &src)
@@ -22,13 +22,13 @@ Brain &Brain::operator=(const Brain &src)
 	{
 		this->_ideas[i] = src._ideas[i];
 	}
-	std::cout << "Brain\tCopy assigned🧠" << std::endl;
+	std::cout << "--Brain\t\tCopy assigned🧠" << std::endl;
 	return *(this);
 }
 
 Brain::~Brain(void)
 {
-	std::cout << "Brain\tDestructed💥" << std::endl;
+	std::cout << "---Brain\tDestructed💥" << std::endl;
 	return;
 }
 
