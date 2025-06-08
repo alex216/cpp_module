@@ -17,7 +17,7 @@ Cat &Cat::operator=(const Cat &src)
 {
 	if (this != &src)
 	{
-		Animal::operator=(src);
+		Animal::operator=(src); // "this = src" will call Animal's copy assignment operator
 		delete this->_brain;
 		this->_brain = new Brain(*src._brain);
 	}
