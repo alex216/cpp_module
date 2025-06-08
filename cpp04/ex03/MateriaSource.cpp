@@ -1,5 +1,8 @@
 #include "MateriaSource.hpp"
 
+#define ORANGE "\033[38;5;214m"
+#define RESET "\033[0m"
+
 MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < MAX_ITEMS; ++i)
@@ -54,7 +57,7 @@ void MateriaSource::learnMateria(AMateria *m)
 			return;
 		}
 	}
-	std::cerr << "error: materia source is full" << std::endl;
+	std::cerr << ORANGE "error: materia source is full" << RESET << std::endl;
 }
 
 AMateria *MateriaSource::createMateria(std::string const &type)
@@ -66,6 +69,6 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 			return _materia[i]->clone();
 		}
 	}
-	std::cerr << "error: materia of type '" << type << "' not found" << std::endl;
+	std::cerr << ORANGE "error: materia of type '" << type << "' not found" << RESET << std::endl;
 	return NULL;
 }

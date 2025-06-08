@@ -1,5 +1,8 @@
 #include "Character.hpp"
 
+#define ORANGE "\033[38;5;214m"
+#define RESET "\033[0m"
+
 Character::Character()
 {
 	std::cerr << "Character\tdefault constructor" << std::endl;
@@ -69,21 +72,21 @@ void Character::equip(AMateria *m)
 		if (_inventory[i] == NULL)
 		{
 			_inventory[i] = m;
-			std::cerr << "Equipped " << m->getType() << " at index " << i << std::endl;
+			std::cerr << ORANGE "Equipped " << m->getType() << " at index " << i << RESET << std::endl;
 			return;
 		}
 	}
-	std::cerr << "Inventory is full, cannot equip " << m->getType() << std::endl;
+	std::cerr << ORANGE "Inventory is full, cannot equip " << m->getType() << RESET << std::endl;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= MAX_ITEMS || _inventory[idx] == NULL)
 	{
-		std::cerr << "Cannot unequip from index " << idx << std::endl;
+		std::cerr << ORANGE "Cannot unequip from index " << idx << RESET << std::endl;
 		return;
 	}
-	std::cerr << "Unequipped " << _inventory[idx]->getType() << " from index " << idx << std::endl;
+	std::cerr << ORANGE "Unequipped " << _inventory[idx]->getType() << " from index " << idx << RESET << std::endl;
 	_inventory[idx] = NULL;
 }
 
@@ -91,7 +94,7 @@ void Character::use(int idx, ICharacter &target)
 {
 	if (idx < 0 || idx >= MAX_ITEMS || _inventory[idx] == NULL)
 	{
-		std::cerr << "Cannot use from index " << idx << std::endl;
+		std::cerr << ORANGE "Cannot use from index " << idx << RESET << std::endl;
 		return;
 	}
 	_inventory[idx]->use(target);

@@ -1,5 +1,8 @@
 #include "AMateria.hpp"
 
+#define ORANGE "\033[38;5;214m"
+#define RESET "\033[0m"
+
 AMateria::AMateria()
 {
 	std::cerr << "AMateria\tdefault constructor" << std::endl;
@@ -39,5 +42,5 @@ std::string const &AMateria::getType() const
 // member functions
 void AMateria::use(ICharacter &target)
 {
-	std::cerr << "AMateria\tuse: " << this->getType() << " on " << target.getName() << std::endl;
+	std::cerr << ORANGE "AMateria\tuse: " << this->getType() << " on " << target.getName() << RESET << std::endl;
 }

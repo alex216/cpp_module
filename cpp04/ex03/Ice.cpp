@@ -1,5 +1,8 @@
 #include "Ice.hpp"
 
+#define ORANGE "\033[38;5;214m"
+#define RESET "\033[0m"
+
 Ice::Ice() : AMateria("ice")
 {
 	std::cerr << "Ice\tdefault constructor" << std::endl;
@@ -27,11 +30,11 @@ Ice::~Ice()
 // member functions
 AMateria *Ice::clone() const
 {
-	std::cerr << "Ice\tclone" << std::endl;
+	std::cerr << ORANGE "Ice\tclone" << RESET << std::endl;
 	return new Ice(*this);
 }
 
 void Ice::use(ICharacter &target)
 {
-	std::cerr << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
+	std::cerr << ORANGE "* shoots an ice bolt at " << target.getName() << " *" << RESET << std::endl;
 }
