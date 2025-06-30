@@ -50,6 +50,7 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 		throw AForm::NotSignedException();
 
 	std::cout << "some drilling noises" << std::endl;
+	std::srand(static_cast<unsigned int>(time(0)));
 	if (std::rand() % 2)
 		std::cout << this->getTarget() << " has been robotomized successfully" << std::endl;
 	else
