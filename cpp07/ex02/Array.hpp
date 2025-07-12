@@ -39,7 +39,7 @@ public:
 		delete[] this->_array;
 	};
 
-	const T &operator[](unsigned int i)
+	T &operator[](unsigned int i)
 	{
 		if (i >= this->_size)
 			throw std::out_of_range("Index out of range");
@@ -49,11 +49,6 @@ public:
 	unsigned int size(void) const
 	{
 		return this->_size;
-	};
-
-	void set_element(unsigned int i, T element)
-	{
-		this->_array[i] = element;
 	};
 
 private:

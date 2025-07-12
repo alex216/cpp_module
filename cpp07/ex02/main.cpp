@@ -19,8 +19,7 @@ int main()
 	Array<int> array1(5);
 	(void)array1;
 
-	// example 2
-	// "Try to compile int * a = new int(); then display *a."
+	// example 2 // "Try to compile int * a = new int(); then display *a."
 	// int *a = new int();
 	// std::cout << *a << std::endl;
 	// delete a;
@@ -34,14 +33,14 @@ int main()
 	std::cout << "test assignment" << std::endl;
 	Array<int> array3_a;
 	array3_a = *array2;
-	array3_a.set_element(0, 42);
+	array3_a[0] = 42;
 	std::cout << array3_a[0] << std::endl;
 	std::cout << (*array2)[0] << std::endl;
 
 	// // test copy constructor
 	std::cout << "test copy constructor" << std::endl;
 	Array<int> array3_c(*array2);
-	array3_c.set_element(1, 42);
+	array3_c[1] = 42;
 	std::cout << array3_c[1] << std::endl;
 	std::cout << (*array2)[1] << std::endl;
 
