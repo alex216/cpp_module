@@ -1,4 +1,5 @@
 .devcontainer
+.claude
 cpp00/.vscode
 cpp00/ex00/megaphone
 cpp00/ex00/megaphone.o
