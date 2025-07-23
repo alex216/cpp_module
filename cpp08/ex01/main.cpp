@@ -1,12 +1,10 @@
-#include <iostream>
-#include <sstream>
-#include <iterator>
-#include <cstdlib>
-#include <ctime>
-#include <sys/time.h>
-#include <iomanip>
+#include <iostream>     // std::cout, std::endl
+#include <cstdlib>      // std::srand, std::rand
+#include <ctime>        // std::time
+#include <sys/time.h>   // gettimeofday, struct timeval
+#include <iomanip>      // std::setw, std::setprecision, std::fixed
 #include "Span.hpp"
-#include "Span_multiset.hpp"
+#include "SpanMultiset.hpp"
 
 namespace {
 	template<typename SpanType>
@@ -82,9 +80,9 @@ int main()
 	const double vector_longest_time = getTimeDiff(start, end);
 	
 	// Multiset implementation test
-	const Span_multiset multiset_span(10000);
+	const SpanMultiset multiset_span(10000);
 	gettimeofday(&start, NULL);
-	addNumbers(const_cast<Span_multiset&>(multiset_span), test_numbers);
+	addNumbers(const_cast<SpanMultiset&>(multiset_span), test_numbers);
 	gettimeofday(&end, NULL);
 	const double multiset_add_time = getTimeDiff(start, end);
 	

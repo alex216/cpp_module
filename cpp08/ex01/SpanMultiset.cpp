@@ -1,15 +1,15 @@
-#include "Span_multiset.hpp"
+#include "SpanMultiset.hpp"
 
-Span_multiset::Span_multiset(unsigned int n) : capacity_(n)
+SpanMultiset::SpanMultiset(unsigned int n) : capacity_(n)
 {
 }
 
-Span_multiset::Span_multiset(const Span_multiset &src)
+SpanMultiset::SpanMultiset(const SpanMultiset &src)
 {
 	*this = src;
 }
 
-Span_multiset &Span_multiset::operator=(const Span_multiset &src)
+SpanMultiset &SpanMultiset::operator=(const SpanMultiset &src)
 {
 	if (this != &src)
 	{
@@ -19,11 +19,11 @@ Span_multiset &Span_multiset::operator=(const Span_multiset &src)
 	return *this;
 }
 
-Span_multiset::~Span_multiset(void)
+SpanMultiset::~SpanMultiset(void)
 {
 }
 
-void Span_multiset::addNumber(int num)
+void SpanMultiset::addNumber(int num)
 {
 	if (database_.size() >= capacity_)
 	{
@@ -32,7 +32,7 @@ void Span_multiset::addNumber(int num)
 	database_.insert(num);
 }
 
-unsigned int Span_multiset::shortestSpan(void) const
+unsigned int SpanMultiset::shortestSpan(void) const
 {
 	if (database_.size() < 2)
 	{
@@ -57,7 +57,7 @@ unsigned int Span_multiset::shortestSpan(void) const
 	return min_span;
 }
 
-unsigned int Span_multiset::longestSpan() const
+unsigned int SpanMultiset::longestSpan() const
 {
 	if (database_.size() < 2)
 	{

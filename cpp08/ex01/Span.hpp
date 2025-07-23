@@ -1,11 +1,8 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <stdexcept>
-#include <climits>
+#include <vector>       // vector
+#include <algorithm>    // sort
 
 class Span
 {
