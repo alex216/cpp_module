@@ -62,11 +62,14 @@ unsigned int Span::longestSpan() const
 		throw std::logic_error("Not enough numbers");
 	}
 
-	const std::pair
-	<
-		std::vector<int>::const_iterator,
-		std::vector<int>::const_iterator
-	>
-	minmax = std::minmax_element(database_.begin(), database_.end());
-	return static_cast<unsigned int>(*minmax.second - *minmax.first);
+	int min = *database_.begin();
+	int max = *database_.begin();
+	for (std::vector<int>::const_iterator it = database_.begin(); it != database_.end(); ++it)
+	{
+		if (*it < min)
+			min = *it;
+		if (*it > max)
+			max = *it;
+	}
+	return static_cast<unsigned int>(max - min);
 }

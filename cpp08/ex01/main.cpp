@@ -29,7 +29,7 @@ int main()
 	sp.addNumber(9);
 	sp.addNumber(11);
 
-	std::cout << "Original test:" << std::endl;
+	std::cout << "=== Original test ===" << std::endl;
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
@@ -45,7 +45,7 @@ int main()
 	
 	addNumbers(big_span, random_numbers);
 	
-	std::cout << "\n10000 random numbers test:" << std::endl;
+	std::cout << "\n=== 10000 random numbers test ===" << std::endl;
 	std::cout << "Shortest span: " << big_span.shortestSpan() << std::endl;
 	std::cout << "Longest span: " << big_span.longestSpan() << std::endl;
 	
@@ -128,6 +128,51 @@ int main()
 	std::cout << "+----------------+-----------+-----------+" << std::endl;
 	std::cout << "Results: Vector=" << vector_shortest << "/" << vector_longest 
 	          << ", Multiset=" << multiset_shortest << "/" << multiset_longest << std::endl;
+	
+	// Exception tests
+	std::cout << "\n=== Exception Tests ===" << std::endl;
+	
+	// Test 1: std::length_error when adding to full Span
+	try {
+		Span small_span(2);
+		small_span.addNumber(1);
+		small_span.addNumber(2);
+		small_span.addNumber(3); // This should throw std::length_error
+	} catch (const std::length_error& e) {
+		std::cout << "Caught expected length_error:\t\t\t\t" << e.what() << std::endl;
+	}
+	
+	// Test 2: std::logic_error when calling shortestSpan with less than 2 numbers
+	try {
+		const Span empty_span(5);
+		empty_span.shortestSpan(); // This should throw std::logic_error
+	} catch (const std::logic_error& e) {
+		std::cout << "Caught expected logic_error (empty shortestSpan):\t" << e.what() << std::endl;
+	}
+	
+	try {
+		Span single_span(5);
+		single_span.addNumber(42);
+		single_span.shortestSpan(); // This should throw std::logic_error
+	} catch (const std::logic_error& e) {
+		std::cout << "Caught expected logic_error (single shortestSpan):\t" << e.what() << std::endl;
+	}
+	
+	// Test 3: std::logic_error when calling longestSpan with less than 2 numbers
+	try {
+		Span empty_span(5);
+		empty_span.longestSpan(); // This should throw std::logic_error
+	} catch (const std::logic_error& e) {
+		std::cout << "Caught expected logic_error (empty longestSpan):\t" << e.what() << std::endl;
+	}
+	
+	try {
+		Span single_span(5);
+		single_span.addNumber(42);
+		single_span.longestSpan(); // This should throw std::logic_error
+	} catch (const std::logic_error& e) {
+		std::cout << "Caught expected logic_error (single longestSpan):\t" << e.what() << std::endl;
+	}
 	
 	return 0;
 }

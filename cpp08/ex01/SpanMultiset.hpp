@@ -2,6 +2,8 @@
 #define SPANMULTISET_HPP
 
 #include <set>          // multiset
+#include <climits>
+#include <stdexcept>
 
 class SpanMultiset
 {
