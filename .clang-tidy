@@ -24,7 +24,8 @@ Checks: >
   -performance-avoid-endl,
   -misc-include-cleaner,
   -performance-enum-size,
-  -readability-magic-numbers
+  -readability-magic-numbers,
+  -google-explicit-constructor
 # diff
 # -misc-const-correctness,
 # -performance-move-const-arg,
