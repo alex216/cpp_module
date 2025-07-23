@@ -19,6 +19,7 @@ Checks: >
 
   -modernize-*,
   -readability-identifier-length,
+  -readability-isolate-declaration,
   -bugprone-easily-swappable-parameters,
   -bugprone-exception-escape,
   -performance-avoid-endl,
