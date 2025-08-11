@@ -1,8 +1,7 @@
 #include "BitcoinExchange.hpp"
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <iomanip>
+
+#include <string>
+#include <cstdlib>
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -20,9 +19,9 @@ bool BitcoinExchange::parseDate(const std::string& dateStr) {
     for (size_t i = 0; i < month.length(); ++i) if (!std::isdigit(month[i])) return false;
     for (size_t i = 0; i < day.length(); ++i) if (!std::isdigit(day[i])) return false;
     
-    const int y = std::stoi(year);
-    const int m = std::stoi(month);
-    const int d = std::stoi(day);
+    const int y = std::atoi(year.c_str());
+    const int m = std::atoi(month.c_str());
+    const int d = std::atoi(day.c_str());
     
     if (y < 1000 || y > 9999) return false;
     if (m < 1 || m > 12) return false;
@@ -37,12 +36,7 @@ bool BitcoinExchange::parseDate(const std::string& dateStr) {
 
 bool BitcoinExchange::parseValue(const std::string& valueStr, float& value, std::string& errorMsg) {
     try {
-        size_t pos;
-        value = std::stof(valueStr, &pos);
-        if (pos != valueStr.length()) {
-            errorMsg = "Error: bad input => " + valueStr;
-            return false;
-        }
+        value = std::atof(valueStr.c_str());
         if (value < 0) {
             errorMsg = "Error: not a positive number.";
             return false;
@@ -59,7 +53,7 @@ bool BitcoinExchange::parseValue(const std::string& valueStr, float& value, std:
 }
 
 void BitcoinExchange::loadDatabase(const std::string& filename) {
-    std::ifstream file(filename);
+    std::ifstream file(filename.c_str());
     std::string line;
     
     if (!file.is_open()) {
@@ -74,7 +68,7 @@ void BitcoinExchange::loadDatabase(const std::string& filename) {
         std::string date, rate_str;
         
         if (std::getline(iss, date, ',') && std::getline(iss, rate_str)) {
-            const float rate = std::stof(rate_str);
+            const float rate = std::atof(rate_str.c_str());
             priceData_[date] = rate;
         }
     }
@@ -93,7 +87,7 @@ float BitcoinExchange::findClosestPrice(const std::string& date) {
 void BitcoinExchange::processInputFile(const std::string& inputFile) {
     loadDatabase("data.csv");
     
-    std::ifstream file(inputFile);
+    std::ifstream file(inputFile.c_str());
     std::string line;
     
     if (!file.is_open()) {
