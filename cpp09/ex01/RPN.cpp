@@ -1,7 +1,4 @@
 #include "RPN.hpp"
-#include <iostream>
-#include <sstream>
-#include <stdexcept>
 
 RPN::RPN() {}
 
