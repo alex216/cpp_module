@@ -1,7 +1,6 @@
 #include "RPN.hpp"
 #include <iostream>
 
-// almost all codes are written by claude code lol
 int main(int argc, char** argv) {
     if (argc != 2) {
         std::cerr << "Error" << std::endl;
