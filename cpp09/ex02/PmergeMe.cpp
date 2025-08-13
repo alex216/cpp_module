@@ -28,9 +28,9 @@ bool PmergeMe::parseArguments(int argc, char** argv, std::vector<int>& numbers) 
             return false;
         }
         
-        if (arg[0] == '-') {
-            return false;
-        }
+        // if (arg[0] == '-') {
+        //     return false;
+        // }
         
         for (size_t j = 0; j < arg.length(); ++j) {
             if (!std::isdigit(arg[j])) {
@@ -39,7 +39,7 @@ bool PmergeMe::parseArguments(int argc, char** argv, std::vector<int>& numbers) 
         }
         
         std::istringstream iss(arg);
-        int num;
+        long num;
         iss >> num;
         
         if (num > INT_MAX || num < 0) {
