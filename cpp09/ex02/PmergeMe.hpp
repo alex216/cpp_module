@@ -63,16 +63,16 @@ private:
         
         // Step 5: Generate Jacobsthal sequence
         std::vector<size_t> altered_jacobsthal = genAlterJacobsthalSeq(sub_chain.size());
-        
+
         // Step 6: Insert sub_chain elements using Jacobsthal sequence
-        // altered_jacobsthal: 0, 1, 1, 3, 5, 11,...
-        // <start, end> = <2,0>, <4,2>, <10, 4>...
-        for (size_t i = 3; i < altered_jacobsthal.size(); ++i) {
+        // altered_jacobsthal: 0, 1, 1, 3,     5,     11,...
+        // <start, end> =              <2,0>, <4,2>, <10, 4>...
+        for (size_t i = 3;  altered_jacobsthal[i - 1] - 1 < sub_chain.size(); ++i) {
             const size_t start_index = altered_jacobsthal[i] - 1;
             const size_t end_index = altered_jacobsthal[i - 1] - 1;
 
             for (size_t j = start_index; j > end_index; --j) {
-                if (start_index >= sub_chain.size())
+                if (j >= sub_chain.size())
                     continue;
                 const int pos = binarySearch(main_chain, sub_chain[j], (1<<(i-1))-1, comparisions);
                 main_chain.insert(main_chain.begin() + pos, sub_chain[j]);
