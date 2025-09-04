@@ -68,6 +68,8 @@ private:
         // altered_jacobsthal: 0, 1, 1, 3,     5,     11,...
         // <start, end> =              <2,0>, <4,2>, <10, 4>...
         for (size_t i = 3;  altered_jacobsthal[i - 1] - 1 < sub_chain.size(); ++i) {
+            if (i >= altered_jacobsthal.size())
+                break;
             const size_t start_index = altered_jacobsthal[i] - 1;
             const size_t end_index = altered_jacobsthal[i - 1] - 1;
 
