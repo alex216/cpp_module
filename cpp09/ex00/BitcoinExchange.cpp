@@ -22,16 +22,26 @@ bool BitcoinExchange::parseDate(const std::string& dateStr) {
     const int y = std::atoi(year.c_str());
     const int m = std::atoi(month.c_str());
     const int d = std::atoi(day.c_str());
-    
-    if (y < 1000 || y > 9999) return false;
+
+    if (y < 1900 || y > 3000) return false;
     if (m < 1 || m > 12) return false;
-    int days_in_month[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-    const bool is_leap = (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0));
-    if (is_leap && m == 2)
-        days_in_month[1] = 29;
-    if (d < 1 || d > days_in_month[m - 1]) return false;
+    if (d < 1 || d > 31) return false;
+
+    const int original_year = y;
+    const int original_month = m;
+    const int original_day = d;
     
-    return true;
+    struct tm timeinfo = {
+        .tm_mday = d,
+        .tm_mon = m - 1,
+        .tm_year = y - 1900,
+    };
+
+    if (std::mktime(&timeinfo) == -1) return false;
+
+    return (timeinfo.tm_year + 1900 == original_year &&
+            timeinfo.tm_mon + 1 == original_month &&
+            timeinfo.tm_mday == original_day);
 }
 
 bool BitcoinExchange::parseValue(const std::string& valueStr, float& value, std::string& errorMsg) {
