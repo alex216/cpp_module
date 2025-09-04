@@ -45,6 +45,26 @@ bool BitcoinExchange::parseDate(const std::string& dateStr) {
 }
 
 bool BitcoinExchange::parseValue(const std::string& valueStr, float& value, std::string& errorMsg) {
+
+    size_t dot_count = 0;
+    for (size_t i = 0; i < valueStr.length(); ++i) {
+        if (!std::isdigit(valueStr[i]) && valueStr[i] != '.' && valueStr[i] != '-') {
+            errorMsg = "Error: bad input => " + valueStr;
+            return false;
+        }
+        if (i != 0 && valueStr[i] == '-') {
+            errorMsg = "Error: bad input => " + valueStr;
+            return false;
+        }
+        if (valueStr[i] == '.') {
+            dot_count++;
+            if (dot_count > 1) {
+                errorMsg = "Error: bad input => " + valueStr;
+                return false;
+            }
+        }
+    }
+
     try {
         value = std::atof(valueStr.c_str());
         if (value < 0) {
