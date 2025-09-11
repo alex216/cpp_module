@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <climits>
 
+size_t comparisions = 0;
+
 // altered_jacobsthal 0,1,1,3,5,11,...
 std::vector<size_t> PmergeMe::genAlterJacobsthalSeq(size_t n) {
     std::vector<size_t> altered_jacobsthal;

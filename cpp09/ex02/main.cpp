@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
     // Sort with vector
     std::vector<int> vector_copy = numbers;
     double start_time = getTime();
-    const int vector_comparisons = PmergeMe::sortContainer(vector_copy);
+    const size_t vector_comparisons = PmergeMe::sortContainer(vector_copy);
     const double vector_time = getTime() - start_time;
     
     // Sort with deque

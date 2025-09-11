@@ -7,12 +7,14 @@
 #include <string>
 #include <algorithm>
 
+extern size_t comparisions;
+
 class PmergeMe {
 private:
     static std::vector<size_t> genAlterJacobsthalSeq(size_t n);
 
     template<typename Container>
-    static void sort(Container& arr, int& comparisions) {
+    static void sort(Container& arr) {
         const size_t n = arr.size();
         if (n <= 1) return;
         
@@ -41,7 +43,7 @@ private:
         for (size_t i = 0; i < pairs.size(); ++i) {
             main_chain.push_back(pairs[i].first);
         }
-        sort(main_chain, comparisions);
+        sort(main_chain);
         
         // Step 3: Create the sub_chain
         std::vector<int> sub_chain;
@@ -76,7 +78,7 @@ private:
             for (size_t j = start_index; j > end_index; --j) {
                 if (j >= sub_chain.size())
                     continue;
-                const int pos = binarySearch(main_chain, sub_chain[j], (1<<(i-1))-1, comparisions);
+                const int pos = binarySearch(main_chain, sub_chain[j], fmin(sub_chain.size(), (1<<(i-1))-1));
                 main_chain.insert(main_chain.begin() + pos, sub_chain[j]);
             }
         }
@@ -85,7 +87,7 @@ private:
     }
 
     template<typename Container>
-    static int binarySearch(const Container& arr, int target, int end, int& comparisions) {
+    static int binarySearch(const Container& arr, int target, int end) {
         int left = 0;
         int right = end;
         
@@ -103,10 +105,9 @@ private:
 
 public:
     template<typename Container>
-    static int sortContainer(Container& arr) {
-        int comparisons = 0;
-        sort(arr, comparisons);
-        return comparisons;
+    static size_t sortContainer(Container& arr) {
+        sort(arr);
+        return comparisions;
     }
     
     static bool parseArguments(int argc, char** argv, std::vector<int>& numbers);
