@@ -16,6 +16,8 @@ private:
     static bool isNumber(const std::string& token);
     static double performOperation(double a, double b, const std::string& op);
 
+	RPN(const RPN& other);
+	RPN& operator=(const RPN& other);
 public:
     RPN();
     ~RPN();

@@ -18,9 +18,12 @@ private:
     void loadDatabase(const std::string& filename);
     float findClosestPrice(const std::string& date);
 
+	BitcoinExchange(const BitcoinExchange& other);
+	BitcoinExchange& operator=(const BitcoinExchange& other);
 public:
     BitcoinExchange();
     ~BitcoinExchange();
+
     void processInputFile(const std::string& inputFile);
 };
 
