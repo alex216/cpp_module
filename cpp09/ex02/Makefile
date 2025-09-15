@@ -22,6 +22,11 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
+.PHONY: debug
+debug: FLAGS += -g -O0 -fsanitize=address -fsanitize=undefined,integer
+debug: fclean all test
+	@python3 ./ford-jonson-tester/ford-johnson-tester.py
+
 ##########################################
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -49,6 +54,12 @@ test: all
 	@echo ""
 	@echo "Testing with 21 elements..."
 	@./$(NAME) 21 1 13 2 17 3 12 4 20 5 15 6 19 7 14 8 18 9 16 10 11
+	@echo ""
+	@echo "Testing various 3 elements..."
+	@for i in {1..40}; do \
+		./PmergeMe `shuf -i 1-100 -n 21 | tr '\n' ' '` | grep "com" ;\
+	done
+
 
 .PHONY: bigtest
 bigtest: all

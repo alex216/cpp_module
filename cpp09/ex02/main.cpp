@@ -44,7 +44,7 @@ int main(int argc, char** argv) {
               << " elements with std::vector : " << vector_time << " us" << std::endl;
     std::cout << "Time to process a range of " << numbers.size() 
               << " elements with std::deque : " << deque_time << " us" << std::endl;
-    std::cout << "Comparisons :" << vector_comparisons << std::endl;
+    std::cout << "Number of comparisons: " << vector_comparisons << std::endl;
     
     return 0;
 }
