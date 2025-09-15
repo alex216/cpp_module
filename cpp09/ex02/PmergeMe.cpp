@@ -13,7 +13,8 @@ std::vector<size_t> PmergeMe::genAlterJacobsthalSeq(size_t n) {
     
     size_t next = 1;
     while (next < n) {
-        next = altered_jacobsthal[altered_jacobsthal.size() - 1] + 2 * altered_jacobsthal[altered_jacobsthal.size() - 2];
+        size_t size = altered_jacobsthal.size();
+        next = altered_jacobsthal[size - 1] + 2 * altered_jacobsthal[size - 2];
         altered_jacobsthal.push_back(next);
     }
     return altered_jacobsthal;
@@ -29,10 +30,6 @@ bool PmergeMe::parseArguments(int argc, char** argv, std::vector<int>& numbers) 
         if (arg.empty()) {
             return false;
         }
-        
-        // if (arg[0] == '-') {
-        //     return false;
-        // }
         
         for (size_t j = 0; j < arg.length(); ++j) {
             if (!std::isdigit(arg[j])) {
