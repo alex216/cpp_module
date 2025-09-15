@@ -5,19 +5,19 @@
 
 size_t comparisions = 0;
 
-// altered_jacobsthal 0,1,1,3,5,11,...
-std::vector<size_t> PmergeMe::genAlterJacobsthalSeq(size_t n) {
-    std::vector<size_t> altered_jacobsthal;
-    altered_jacobsthal.push_back(0);
-    altered_jacobsthal.push_back(1);
+// jacobsthal 0,1,1,3,5,11,...
+std::vector<size_t> PmergeMe::genJacobsthalSeq(const size_t sub_chain_size) {
+    std::vector<size_t> jacobsthal;
+    jacobsthal.push_back(0);
+    jacobsthal.push_back(1);
     
-    size_t next = 1;
-    while (next < n) {
-        size_t size = altered_jacobsthal.size();
-        next = altered_jacobsthal[size - 1] + 2 * altered_jacobsthal[size - 2];
-        altered_jacobsthal.push_back(next);
+    size_t element = jacobsthal[1];
+    while (element < sub_chain_size) {
+        size_t size = jacobsthal.size();
+        element = jacobsthal[size - 1] + 2 * jacobsthal[size - 2];
+        jacobsthal.push_back(element);
     }
-    return altered_jacobsthal;
+    return jacobsthal;
 }
 
 
