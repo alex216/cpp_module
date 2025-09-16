@@ -25,6 +25,7 @@ re: fclean all
 .PHONY: debug
 debug: FLAGS += -g -O0 -fsanitize=address -fsanitize=undefined,integer
 debug: fclean all test
+	@git clone https://github.com/emuminov/ford-jonson-tester.git
 	@python3 ./ford-jonson-tester/ford-johnson-tester.py
 
 ##########################################

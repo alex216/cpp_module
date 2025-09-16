@@ -11,7 +11,7 @@ extern size_t comparisions;
 
 class PmergeMe {
 private:
-    static std::vector<size_t> genJacobsthalSeq(size_t n);
+    static std::vector<int> genJacobsthalSeq(const size_t n);
 
     template<typename Container>
     static void sort(Container& arr) {
@@ -65,32 +65,24 @@ private:
         }
         
         // Step 5: Generate Jacobsthal sequence
-        std::vector<size_t> jacobsthal = genJacobsthalSeq(sub_chain.size());
+        std::vector<int> jacobsthal = genJacobsthalSeq(sub_chain.size());
 
         // Step 6: Insert sub_chain elements using Jacobsthal sequence
+		// index(i):         0, 1,   2,     3,     4,      5,...
         // jacobsthal:       0, 1,   1,     3,     5,     11,...
-        // <start, end> =                  <1,0>, <3,2>,  <9, 4>...
-        for (
-			size_t i = 3;
-			i < jacobsthal.size();
-			++i
-		) {
-            if (i >= jacobsthal.size())
-                break;
-            const size_t start_index = jacobsthal[i] - 2;
-            const size_t end_index = jacobsthal[i - 1] - 1;
+        // <start, end>:                   <1,0>, <3,2>,  <9, 4>...
 	
-			size_t j = start_index;
-			while (j >= end_index) {
-                if (j >= sub_chain.size())
+        for (size_t i = 3; i < jacobsthal.size(); ++i) {
+            const int start_index = jacobsthal[i] - 2;
+            const int end_index = jacobsthal[i - 1] - 1;
+	
+			for (int j = start_index; j >= end_index; --j)
+			{
+                if (j >= static_cast<int>(sub_chain.size()))
                     continue;
 				int right_bound = std::min(main_chain.size(),static_cast<size_t>(1<<(i-1))-1);
                 const int pos = binarySearch(main_chain, sub_chain[j], right_bound);
                 main_chain.insert(main_chain.begin() + pos, sub_chain[j]);
-
-				if (j == 0)
-					break;
-				--j;
             }
         }
         

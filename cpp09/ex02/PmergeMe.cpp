@@ -6,14 +6,14 @@
 size_t comparisions = 0;
 
 // jacobsthal 0,1,1,3,5,11,...
-std::vector<size_t> PmergeMe::genJacobsthalSeq(const size_t sub_chain_size) {
-    std::vector<size_t> jacobsthal;
+std::vector<int> PmergeMe::genJacobsthalSeq(const size_t sub_chain_size) {
+    std::vector<int> jacobsthal;
     jacobsthal.push_back(0);
     jacobsthal.push_back(1);
-    
-    size_t element = jacobsthal[1];
-    while (element < sub_chain_size) {
-        size_t size = jacobsthal.size();
+
+    int element = jacobsthal.back();
+    while (element - 2 < static_cast<int>(sub_chain_size)) {
+        const size_t size = jacobsthal.size();
         element = jacobsthal[size - 1] + 2 * jacobsthal[size - 2];
         jacobsthal.push_back(element);
     }
@@ -53,10 +53,12 @@ bool PmergeMe::parseArguments(int argc, char** argv, std::vector<int>& numbers) 
 
 void PmergeMe::printSequence(const std::vector<int>& arr, const std::string& label) {
     std::cout << label;
-    for (size_t i = 0; i < arr.size() && i < 30; ++i) {
+
+	const size_t max_num = 100;
+    for (size_t i = 0; i < arr.size() && i < max_num; ++i) {
         std::cout << " " << arr[i];
     }
-    if (arr.size() > 30) {
+    if (arr.size() > max_num) {
         std::cout << " [...]";
     }
     std::cout << std::endl;
