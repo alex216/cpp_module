@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 NAME = PmergeMe
 SRC = *.cpp
 OBJ = $(SRC:.cpp=.o)
@@ -25,7 +26,9 @@ re: fclean all
 .PHONY: debug
 debug: FLAGS += -g -O0 -fsanitize=address -fsanitize=undefined,integer
 debug: fclean all test
-	@git clone https://github.com/emuminov/ford-jonson-tester.git
+	@if [ ! -d ford-jonson-tester ]; then \
+		git clone https://github.com/emuminov/ford-jonson-tester.git; \
+	fi
 	@python3 ./ford-jonson-tester/ford-johnson-tester.py
 
 ##########################################
@@ -56,7 +59,7 @@ test: all
 	@echo "Testing with 21 elements..."
 	@./$(NAME) 21 1 13 2 17 3 12 4 20 5 15 6 19 7 14 8 18 9 16 10 11
 	@echo ""
-	@echo "Testing various 3 elements..."
+	@echo "Testing various 21 elements..."
 	@for i in {1..40}; do \
 		./PmergeMe `shuf -i 1-100 -n 21 | tr '\n' ' '` | grep "com" ;\
 	done
